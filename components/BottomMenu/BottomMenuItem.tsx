@@ -1,5 +1,4 @@
-import { Pressable, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
-import React, { useEffect } from "react"
+import { Pressable, StyleSheet, View } from "react-native"
 import Layout from "../../constants/Layout"
 
 import Animated, {

@@ -1,5 +1,4 @@
 import { StyleSheet, useWindowDimensions, View } from "react-native"
-import React, { useEffect } from "react"
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs"
 import { BottomMenuItem } from "./BottomMenuItem"
 import Layout from "../../constants/Layout"
