@@ -3,36 +3,27 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
-import { BottomMenu } from "../components/BottomMenu";
+import { FontAwesome } from "@expo/vector-icons"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import * as React from "react"
+import { ColorSchemeName, Pressable } from "react-native"
+import { BottomMenu } from "../components/BottomMenu"
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import ModalScreen from "../screens/ModalScreen";
-import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from "../types";
-import LinkingConfiguration from "./LinkingConfiguration";
+import Colors from "../constants/Colors"
+import useColorScheme from "../hooks/useColorScheme"
+import ModalScreen from "../screens/ModalScreen"
+import NotFoundScreen from "../screens/NotFoundScreen"
+import TabOneScreen from "../screens/TabOneScreen"
+import TabTwoScreen from "../screens/TabTwoScreen"
+import TabThreeScreen from "../screens/TabThreeScreen"
+import TabFourScreen from "../screens/TabFourScreen"
+import TabFiveScreen from "../screens/TabFiveScreen"
+import { RootStackParamList, RootTabParamList, RootTabScreenProps } from "../types"
+import LinkingConfiguration from "./LinkingConfiguration"
 
-export default function Navigation({
-  colorScheme,
-}: {
-  colorScheme: ColorSchemeName;
-}) {
+export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -40,43 +31,35 @@ export default function Navigation({
     >
       <RootNavigator />
     </NavigationContainer>
-  );
+  )
 }
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
  * https://reactnavigation.org/docs/modal
  */
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: "Oops!" }}
-      />
+      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
     </Stack.Navigator>
-  );
+  )
 }
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
+const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme()
 
   return (
     <BottomTab.Navigator
@@ -106,7 +89,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Message"
-        component={TabTwoScreen}
+        component={TabThreeScreen}
         options={{
           title: "Message",
           iconName: "chatbubble-outline",
@@ -114,7 +97,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Photos"
-        component={TabTwoScreen}
+        component={TabFourScreen}
         options={{
           title: "Photos",
           iconName: "camera-outline",
@@ -122,12 +105,12 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Settings"
-        component={TabTwoScreen}
+        component={TabFiveScreen}
         options={{
           title: "Settings",
           iconName: "settings-outline",
         }}
       />
     </BottomTab.Navigator>
-  );
+  )
 }

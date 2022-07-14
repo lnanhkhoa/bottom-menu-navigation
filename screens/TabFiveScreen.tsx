@@ -2,10 +2,10 @@ import { StyleSheet } from "react-native"
 
 import { Text, View } from "../components/Themed"
 
-export default function TabTwoScreen() {
+export default function TabFiveScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+      <Text style={styles.title}>Tab Five</Text>
     </View>
   )
 }
@@ -13,7 +13,7 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F7EDE2",
+    backgroundColor: "#84A59D",
     alignItems: "center",
     justifyContent: "center",
   },

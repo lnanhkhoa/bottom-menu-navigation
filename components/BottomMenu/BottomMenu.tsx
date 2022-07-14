@@ -3,26 +3,16 @@ import React, { useEffect } from "react"
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs"
 import { BottomMenuItem } from "./BottomMenuItem"
 import Layout from "../../constants/Layout"
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-} from "react-native-reanimated"
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated"
 
 const { bottomTab: bottomLayout, animationConfig } = Layout
 
-export function BottomMenu({
-  navigation,
-  descriptors,
-  insets,
-  state,
-}: BottomTabBarProps) {
+export function BottomMenu({ navigation, descriptors, insets, state }: BottomTabBarProps) {
   const { routes = [], index: indexRoute } = state
   const { width } = useWindowDimensions()
   const indicatorMoving = useSharedValue(0)
 
-  const itemWidth =
-    (width - bottomLayout.horizontalPadding) * (1 / routes.length)
+  const itemWidth = (width - bottomLayout.horizontalPadding) * (1 / routes.length)
 
   const goTo = (screen: string) => {
     navigation.navigate(screen)
@@ -97,7 +87,7 @@ const styles = StyleSheet.create({
     height: bottomLayout.indicatorSize,
     width: bottomLayout.indicatorSize,
     borderRadius: 99,
-    backgroundColor: "#3EC70B",
+    backgroundColor: "#51557E",
     left: 0,
     top: -bottomLayout.indicatorSize * 0.5,
   },

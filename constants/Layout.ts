@@ -10,12 +10,12 @@ export default {
   },
   isSmallDevice: width < 375,
   animationDurationTime: 200,
-  animationConfig: { duration: 200 },
+  animationConfig: { duration: 300 },
   bottomTab: {
     horizontalPadding: 10,
     iconSize: 25,
-    iconContainer: 40,
+    iconContainer: 44,
     textContainer: 12,
-    indicatorSize: 40,
+    indicatorSize: 50,
   },
 }

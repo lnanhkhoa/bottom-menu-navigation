@@ -1,21 +1,11 @@
-import {
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  View,
-  ViewStyle,
-} from "react-native"
+import { Pressable, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
 import React, { useEffect } from "react"
 import Layout from "../../constants/Layout"
 
 import Animated, {
   withTiming,
   useAnimatedStyle,
-  useSharedValue,
   useDerivedValue,
-  interpolate,
   interpolateColor,
 } from "react-native-reanimated"
 import { Ionicons } from "@expo/vector-icons"
@@ -32,28 +22,28 @@ interface BottomMenuItemProps {
   focused: boolean
 }
 
-export function BottomMenuItem({
-  itemWidth,
-  onPress,
-  color,
-  title,
-  focused,
-  iconName,
-}: BottomMenuItemProps) {
-  //
-  const iconColor = useSharedValue(color);
+function useStyles({ focused, color }) {
+  const progress = useDerivedValue(() =>
+    focused ? withTiming(1, animationConfig) : withTiming(0, animationConfig)
+  )
+
   const iconMoving = useDerivedValue(() =>
     focused
       ? withTiming(-bottomLayout.iconContainer * 0.5, animationConfig)
       : withTiming(0, animationConfig)
   )
-  const iconStyles = [
+  const iconContainerStyles = [
     useAnimatedStyle(() => ({
       transform: [
         {
           translateY: iconMoving.value,
         },
       ],
+    })),
+  ]
+  const iconStyles = [
+    useAnimatedStyle(() => ({
+      color: interpolateColor(progress.value, [0, 1], ["black", "white"]),
     })),
   ]
 
@@ -64,7 +54,7 @@ export function BottomMenuItem({
   )
   const textStyles = [
     styles.itemText,
-    { color },
+    { color: color },
     useAnimatedStyle(() => ({
       transform: [
         {
@@ -75,16 +65,34 @@ export function BottomMenuItem({
     })),
   ]
 
+  return {
+    textStyles,
+    textMoving,
+    iconContainerStyles,
+    iconMoving,
+    iconStyles,
+  }
+}
+
+export function BottomMenuItem({
+  itemWidth,
+  onPress,
+  color,
+  title,
+  focused,
+  iconName,
+}: BottomMenuItemProps) {
+  const { textStyles, iconContainerStyles, iconStyles } = useStyles({
+    focused,
+    color,
+  })
+
   return (
     <Pressable onPress={onPress}>
       <View style={[styles.item, { width: itemWidth }]}>
         <View style={styles.iconContainter}>
-          <Animated.View style={iconStyles}>
-            <AnimatedIonicons
-              name={iconName}
-              color={iconColor.value}
-              size={bottomLayout.iconSize}
-            />
+          <Animated.View style={iconContainerStyles}>
+            <AnimatedIonicons name={iconName} size={bottomLayout.iconSize} style={iconStyles} />
           </Animated.View>
         </View>
         <View style={styles.textContainer}>
