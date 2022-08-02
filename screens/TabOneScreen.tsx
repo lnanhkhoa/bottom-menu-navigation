@@ -1,17 +1,19 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native"
 
-import EditScreenInfo from "../components/EditScreenInfo";
-import { Text, View } from "../components/Themed";
-import { RootTabScreenProps } from "../types";
+import { Text, View } from "../components/Themed"
+import { RootTabScreenProps } from "../types"
 
-export default function TabOneScreen({
-  navigation,
-}: RootTabScreenProps<"Home">) {
+export default function TabOneScreen({ navigation }: RootTabScreenProps<"Home">) {
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      onLayout={({ nativeEvent }) => {
+        console.log(nativeEvent)
+      }}
+    >
       <Text style={styles.title}>Tab One</Text>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    color: 'white',
+    color: "white",
     fontWeight: "bold",
   },
   separator: {
@@ -31,4 +33,4 @@ const styles = StyleSheet.create({
     height: 1,
     width: "80%",
   },
-});
+})

@@ -9,13 +9,14 @@ export default {
     height,
   },
   isSmallDevice: width < 375,
-  animationDurationTime: 200,
-  animationConfig: { duration: 300 },
+  animationDurationTime: 100,
+  animationConfig: { duration: 250 },
   bottomTab: {
     horizontalPadding: 10,
-    iconSize: 25,
+    iconSize: 21,
     iconContainer: 44,
     textContainer: 12,
     indicatorSize: 50,
+    indicatorOutter: 6
   },
 }

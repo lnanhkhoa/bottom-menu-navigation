@@ -36,7 +36,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "transparent" } }}
+    >
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
@@ -63,6 +65,7 @@ function BottomTabNavigator() {
         headerTransparent: true,
         tabBarActiveTintColor: Colors[colorScheme].tint,
         tabBarInactiveTintColor: Colors[colorScheme].inactiveTint,
+        tabBarStyle: { backgroundColor: "red" },
       }}
     >
       <BottomTab.Screen

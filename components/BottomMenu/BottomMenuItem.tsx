@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, View } from "react-native"
+import { Pressable, StyleSheet, TextStyle, View } from "react-native"
 import Layout from "../../constants/Layout"
 
 import Animated, {
@@ -51,7 +51,7 @@ function useStyles({ focused, color }) {
       ? withTiming(0, animationConfig)
       : withTiming(bottomLayout.textContainer * 0.2, animationConfig)
   )
-  const textStyles = [
+  const textStyles: TextStyle[] = [
     styles.itemText,
     { color: color },
     useAnimatedStyle(() => ({
@@ -104,7 +104,7 @@ export function BottomMenuItem({
 
 const styles = StyleSheet.create({
   itemText: {
-    fontSize: 10,
+    fontSize: 11,
     textAlign: "center",
   },
   item: {
