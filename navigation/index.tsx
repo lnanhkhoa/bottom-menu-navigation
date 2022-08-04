@@ -100,14 +100,14 @@ function BottomTabNavigator() {
           iconName: "camera-outline",
         }}
       />
-      {/* <BottomTab.Screen
+      <BottomTab.Screen
         name="Settings"
         component={TabFiveScreen}
         options={{
           title: "Settings",
           iconName: "settings-outline",
         }}
-      /> */}
+      />
     </BottomTab.Navigator>
   )
 }

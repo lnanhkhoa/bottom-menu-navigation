@@ -13,5 +13,5 @@ try it on Expo.
 Link: https://expo.dev/@lnanhkhoa/bottom-menu-navigation?serviceType=classic&distribution=expo-go
 
 
-<img src="docs/demo.gif" width="500">
+<img src="docs/demo.gif" width="300">
 

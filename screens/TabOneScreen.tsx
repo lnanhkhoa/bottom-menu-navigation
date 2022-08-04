@@ -5,12 +5,7 @@ import { RootTabScreenProps } from "../types"
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<"Home">) {
   return (
-    <View
-      style={styles.container}
-      onLayout={({ nativeEvent }) => {
-        console.log(nativeEvent)
-      }}
-    >
+    <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
     </View>
   )
